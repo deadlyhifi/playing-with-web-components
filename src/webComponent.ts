@@ -1,7 +1,9 @@
 import { LitElement, html, property } from "lit-element";
-import { buttonStyles } from "./style/button";
+
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
+import { globalStyles } from "./style/global";
+import { buttonStyles } from "./style/button";
 
 enum ButtonLabel {
   Enable = "Enable",
@@ -12,17 +14,21 @@ class customHTMLElement extends LitElement {
   @property({ type: String }) text = "Hello World";
   @property({ type: ButtonLabel }) buttonLabel = ButtonLabel.Disable;
   @property({ type: Boolean }) disabled = false;
-  @property({ type: Object }) classes = { mydiv: true, someclass: true };
-  @property({ type: Object }) styles = { color: "green", fontFamily: "Roboto" };
+  @property({ type: Object }) classes = {
+    card: true,
+    highlighted: this.disabled
+  };
+  @property({ type: Object }) styles = { fontFamily: "Roboto" };
 
   static get styles() {
-    return buttonStyles;
+    return [globalStyles, buttonStyles];
   }
 
   clickHandler(event: Event) {
     event.preventDefault();
     this.disabled = !this.disabled;
     this.buttonLabel = this.disabled ? ButtonLabel.Enable : ButtonLabel.Disable;
+    this.classes = { ...this.classes, highlighted: this.disabled };
   }
 
   render() {
