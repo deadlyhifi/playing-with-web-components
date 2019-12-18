@@ -1,0 +1,27 @@
+{
+  "name": "litwebcom",
+  "version": "1.0.0",
+  "description": "Playing with LitElement Web Components",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server .",
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom de Bruin",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@rollup/plugin-node-resolve": "^6.0.0",
+    "@webcomponents/webcomponentsjs": "^2.4.0",
+    "http-server": "^0.12.0",
+    "lit-element": "^2.2.1",
+    "prettier": "^1.19.1",
+    "rollup": "^1.27.13",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "typescript": "^3.7.3"
+  }
+}
