@@ -1,4 +1,5 @@
 import { LitElement, html, property } from "lit-element";
+import { buttonStyles } from "./style/button";
 
 enum ButtonLabel {
   Enable = "Enable",
@@ -7,8 +8,12 @@ enum ButtonLabel {
 
 class customHTMLElement extends LitElement {
   @property({ type: String }) text = "Hello World";
-  @property({ type: ButtonLabel }) buttonLabel = ButtonLabel.Enable;
+  @property({ type: ButtonLabel }) buttonLabel = ButtonLabel.Disable;
   @property({ type: Boolean }) disabled = false;
+
+  static get styles() {
+    return buttonStyles;
+  }
 
   clickHandler(event: Event) {
     event.preventDefault();
