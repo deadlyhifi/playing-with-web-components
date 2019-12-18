@@ -30,6 +30,9 @@ class customHTMLElement extends LitElement {
           border: 10px solid #bada55;
           color: var(--themeColor);
         }
+        .named {
+          border: 1px solid grey;
+        }
       `,
       globalStyles,
       buttonStyles
@@ -50,7 +53,9 @@ class customHTMLElement extends LitElement {
       <input type="text" ?disabled="${this.disabled}" />
       <button @click="${this.clickHandler}">${this.buttonLabel}</button>
       <slot></slot>
-      <slot name="named"></slot>
+      <div class="named">
+        <slot name="named"></slot>
+      </div>
       <div class=${classMap(this.classes)} style=${styleMap(this.styles)}>
         Some content
       </div>
