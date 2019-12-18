@@ -9,6 +9,15 @@
     <script src="./dist/bundle.js"></script>
 
     <title>Web Components</title>
+
+    <style>
+      html {
+        --themeColor: #123456;
+      }
+    </style>
+    <script>
+      document.documentElement.style.setProperty("--themeColor", "blue");
+    </script>
   </head>
   <body>
     <my-custom-component>

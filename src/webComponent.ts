@@ -1,4 +1,4 @@
-import { LitElement, html, property } from "lit-element";
+import { LitElement, html, property, css } from "lit-element";
 
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
@@ -21,7 +21,19 @@ class customHTMLElement extends LitElement {
   @property({ type: Object }) styles = { fontFamily: "Roboto" };
 
   static get styles() {
-    return [globalStyles, buttonStyles];
+    return [
+      css`
+        :host {
+          display: block;
+          border-radius: 2em;
+          padding: 20px;
+          border: 10px solid #bada55;
+          color: var(--themeColor);
+        }
+      `,
+      globalStyles,
+      buttonStyles
+    ];
   }
 
   clickHandler(event: Event) {
