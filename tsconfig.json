@@ -3,11 +3,11 @@
     "target": "es2017",
     "module": "es2015",
     "moduleResolution": "node",
-    "lib": ["es2017", "dom"],
     "declaration": true,
     "declarationDir": "./dist",
     "noImplicitAny": true,
     "outDir": "./dist",
     "experimentalDecorators": true
-  }
+  },
+  "exclude": ["node_modules"]
 }
