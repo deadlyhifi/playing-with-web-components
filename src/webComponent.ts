@@ -22,6 +22,7 @@ class customHTMLElement extends LitElement {
       <p>${this.text}</p>
       <input type="text" ?disabled="${this.disabled}" />
       <button @click="${this.clickHandler}">${this.buttonLabel}</button>
+      <slot></slot>
     `;
   }
 }
