@@ -13,12 +13,39 @@ enum ButtonLabel {
 class customHTMLElement extends LitElement {
   @property({ type: String }) text = "Hello World";
   @property({ type: ButtonLabel }) buttonLabel = ButtonLabel.Disable;
-  @property({ type: Boolean }) disabled = false;
+  @property({ type: Boolean }) buttonEnabled = false;
   @property({ type: Object }) classes = {
     card: true,
-    highlighted: this.disabled
+    highlighted: this.buttonEnabled
   };
   @property({ type: Object }) styles = { fontFamily: "Roboto" };
+  // public text: String;
+  // public buttonLabel: ButtonLabel;
+  // public buttonEnabled: Boolean;
+  // public classes: Object;
+  // public styles: Object;
+
+  // static get properties() {
+  //   return {
+  //     text: { type: String },
+  //     buttonLabel: { type: ButtonLabel },
+  //     buttonEnabled: { type: Boolean },
+  //     classes: { type: Object },
+  //     styles: { type: Object }
+  //   };
+  // }
+
+  // constructor() {
+  //   super();
+  //   this.text = "Hello World";
+  //   this.buttonLabel = ButtonLabel.Disable;
+  //   this.buttonEnabled = false;
+  //   this.classes = {
+  //     card: true,
+  //     highlighted: this.buttonEnabled
+  //   };
+  //   this.styles = { fontFamily: "Roboto" };
+  // }
 
   static get styles() {
     return [
@@ -41,16 +68,18 @@ class customHTMLElement extends LitElement {
 
   clickHandler(event: Event) {
     event.preventDefault();
-    this.disabled = !this.disabled;
-    this.buttonLabel = this.disabled ? ButtonLabel.Enable : ButtonLabel.Disable;
-    this.classes = { ...this.classes, highlighted: this.disabled };
+    this.buttonEnabled = !this.buttonEnabled;
+    this.buttonLabel = this.buttonEnabled
+      ? ButtonLabel.Enable
+      : ButtonLabel.Disable;
+    this.classes = { ...this.classes, highlighted: this.buttonEnabled };
   }
 
   render() {
     return html`
       <p>Hello world! From my-custom-component</p>
       <p>${this.text}</p>
-      <input type="text" ?disabled="${this.disabled}" />
+      <input type="text" ?disabled="${this.buttonEnabled}" />
       <button @click="${this.clickHandler}">${this.buttonLabel}</button>
       <slot></slot>
       <div class="named">

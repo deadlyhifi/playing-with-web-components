@@ -10,5 +10,4 @@
     "outDir": "./dist",
     "experimentalDecorators": true
   }
-  // "include": ["src/**/*"]
 }
