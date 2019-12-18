@@ -1,4 +1,4 @@
-import { LitElement, html, property, css } from "lit-element";
+import { LitElement, html, property, css, customElement } from "lit-element";
 
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
@@ -10,6 +10,7 @@ enum ButtonLabel {
   Disable = "Disable"
 }
 
+@customElement("my-custom-component")
 class customHTMLElement extends LitElement {
   @property({ type: String }) text = "Hello World";
   @property({ type: ButtonLabel }) buttonLabel = ButtonLabel.Disable;
@@ -92,4 +93,4 @@ class customHTMLElement extends LitElement {
   }
 }
 
-customElements.define("my-custom-component", customHTMLElement);
+// customElements.define("my-custom-component", customHTMLElement);
