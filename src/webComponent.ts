@@ -67,7 +67,7 @@ class customHTMLElement extends LitElement {
     ];
   }
 
-  clickHandler(event: Event) {
+  enableButtonClickHandler(event: Event) {
     event.preventDefault();
     this.buttonEnabled = !this.buttonEnabled;
     this.buttonLabel = this.buttonEnabled
@@ -76,12 +76,23 @@ class customHTMLElement extends LitElement {
     this.classes = { ...this.classes, highlighted: this.buttonEnabled };
   }
 
+  sendEventClickHandler(event: Event) {
+    const myEvent = new CustomEvent("my-event", {
+      detail: { message: event },
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(myEvent);
+  }
+
   render() {
     return html`
       <p>Hello world! From my-custom-component</p>
       <p>${this.text}</p>
       <input type="text" ?disabled="${this.buttonEnabled}" />
-      <button @click="${this.clickHandler}">${this.buttonLabel}</button>
+      <button @click="${this.enableButtonClickHandler}">
+        ${this.buttonLabel}
+      </button>
       <slot></slot>
       <div class="named">
         <slot name="named"></slot>
@@ -89,6 +100,7 @@ class customHTMLElement extends LitElement {
       <div class=${classMap(this.classes)} style=${styleMap(this.styles)}>
         Some content
       </div>
+      <button @click="${this.sendEventClickHandler}">Send an event</button>
     `;
   }
 }

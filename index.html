@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-    <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <!-- <script src="./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script> -->
+    <!-- <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script> -->
     <script src="./dist/bundle.js"></script>
 
     <title>Web Components</title>
@@ -31,5 +31,15 @@
     <p class="highlighted">
       with class of highlighted outside of component
     </p>
+
+    <script>
+      document.querySelector("my-custom-component").addEventListener(
+        "my-event",
+        function(e) {
+          console.log(e);
+        },
+        false
+      );
+    </script>
   </body>
 </html>
